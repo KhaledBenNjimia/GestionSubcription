@@ -24,7 +24,7 @@ namespace GestionSubcription.Controllers
 
             if (result.Succeeded)
             {
-                return RedirectToAction("Index", "Dashboard");  // Redirect to admin dashboard
+                return RedirectToAction("Index", "Dashboard");  
             }
 
             ViewBag.Error = "Invalid login attempt!";

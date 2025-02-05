@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace GestionSubcription.Controllers
 {
-    [Authorize(Roles = "Admin")] // Only admins can access this
+    [Authorize(Roles = "Admin")] 
     public class DashboardController : Controller
     {
         public IActionResult Index()
