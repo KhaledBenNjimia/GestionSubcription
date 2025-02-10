@@ -63,7 +63,7 @@
         <div class="box">
             <h3>Add Application</h3>
             <form asp-action="Create" method="post">
-                <input type="text" name="Name" class="form-control mb-2" placeholder="Name" required />
+                <input type="text" name="ApplicationName" class="form-control mb-2" placeholder="Name" required />
                 <input type="text" name="Description" class="form-control mb-2" placeholder="Description" />
                 <button type="submit" class="btn btn-custom">Add</button>
             </form>
@@ -105,7 +105,7 @@
                     {
                         <tr>
                             <td>@app.Id</td>
-                            <td>@app.Name</td>
+                            <td>@app.ApplicationName</td>
                             <td>@app.Description</td>
                             <td>
                                 <a asp-action="Edit" asp-route-id="@app.Id" class="btn btn-warning">Edit</a>

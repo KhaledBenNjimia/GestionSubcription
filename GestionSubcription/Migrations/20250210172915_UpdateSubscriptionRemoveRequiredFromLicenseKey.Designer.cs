@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace GestionSubcription.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20250205011546_AddClientsTableToDb")]
-    partial class AddClientsTableToDb
+    [Migration("20250210172915_UpdateSubscriptionRemoveRequiredFromLicenseKey")]
+    partial class UpdateSubscriptionRemoveRequiredFromLicenseKey
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -33,11 +33,11 @@ namespace GestionSubcription.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<string>("Description")
+                    b.Property<string>("ApplicationName")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Name")
+                    b.Property<string>("Description")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -93,10 +93,13 @@ namespace GestionSubcription.Migrations
                     b.Property<int>("ClientId")
                         .HasColumnType("int");
 
-                    b.Property<DateTime>("DateDebut")
+                    b.Property<DateTime>("EndDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<DateTime>("DateFin")
+                    b.Property<string>("LicenseKey")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("StartDate")
                         .HasColumnType("datetime2");
 
                     b.HasKey("Id");

@@ -1,0 +1,45 @@
+﻿@model IEnumerable<Subscription>
+
+@{
+    ViewData["Title"] = "Subscriptions";
+}
+
+<h2>Subscription Management</h2>
+<a asp-action="Create" class="btn btn-primary">Add Subscription</a>
+
+<table class="table mt-3 table-dark">
+    <thead>
+        <tr>
+            <th>Client</th>
+            <th>Application</th>
+            <th>Start Date</th>
+            <th>End Date</th>
+            <th>License Key</th>
+            <th>Actions</th>
+            <th>Regenerate License</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var sub in Model)
+        {
+            <tr>
+                <td>@sub.Client.Name</td>
+                <td>@sub.Application.ApplicationName</td>
+                <td>@sub.StartDate.ToShortDateString()</td>
+                <td>@sub.EndDate.ToShortDateString()</td>
+                <td>@sub.LicenseKey</td>
+               
+                <td>
+                    <a asp-action="Edit" asp-route-id="@sub.Id" class="btn btn-warning">Edit</a>
+                    <form asp-action="Delete" method="post" style="display:inline;">
+                        <input type="hidden" name="id" value="@sub.Id" />
+                        <button type="submit" class="btn btn-danger">Delete</button>
+                    </form>
+                </td>
+                <td>
+                    <a asp-action="RegenerateLicense" asp-route-id="@sub.Id" class="btn btn-info">Regenerate Key</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
